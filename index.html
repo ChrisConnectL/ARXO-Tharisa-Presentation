@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,14 +36,27 @@
             overflow: hidden;
         }
 
-        .slideshow-container {
-            width: 92vw;
+        .slideshow-wrapper {
+            width: 100vw;
             height: 92vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin: 4vh 0;
+        }
+
+        .slideshow-container {
+            width: 1920px;
+            height: 1080px;
             position: relative;
             background: var(--bg-primary);
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 25px 80px -12px rgba(0, 0, 0, 0.4);
+            transform-origin: center center;
+            flex-shrink: 0;
         }
 
         .slide {
@@ -70,6 +84,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
+            overflow: hidden;
         }
 
         /* Lightbox Modal */
@@ -1543,8 +1558,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <div class="slideshow-container">
-        <!-- Slide 1: Title & Intent -->
+    <div class="slideshow-wrapper">
+        <div class="slideshow-container">
+            <!-- Slide 1: Title & Intent -->
         <section class="slide slide-1 active" data-slide="1">
             <div class="geometric-pattern"></div>
             <button class="pdf-btn" onclick="generatePdf()" title="Generate PDF"><i class="fas fa-file-pdf"></i> Generate PDF</button>
@@ -1903,11 +1919,13 @@
             </div>
         </section>
 
-        <!-- Navigation - Outside slide card on navy background -->
-        <button class="nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-        <button class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
-        <div class="slide-counter"><span id="currentSlide">1</span> / 8</div>
+        </div>
     </div>
+
+    <!-- Navigation - Outside slide card on navy background -->
+    <button class="nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+    <button class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    <div class="slide-counter"><span id="currentSlide">1</span> / 8</div>
 
     <!-- Lightbox Modal -->
     <div class="lightbox-modal" id="lightboxModal">
@@ -1952,19 +1970,23 @@
             `;
             document.body.appendChild(progressOverlay);
 
+            const container = document.querySelector('.slideshow-container');
+            const originalTransform = container.style.transform;
+
             try {
                 const { jsPDF } = window.jspdf;
                 const slides = document.querySelectorAll('.slide');
-                const container = document.querySelector('.slideshow-container');
                 
-                // Get container dimensions (the full canvas with navy background)
-                const containerRect = container.getBoundingClientRect();
-                const pdfWidth = Math.round(containerRect.width);
-                const pdfHeight = Math.round(containerRect.height);
+                // Reset transform for native resolution capture
+                container.style.transform = 'scale(1)';
+                
+                // Use fixed 1920x1080 dimensions for PDF
+                const pdfWidth = 1920;
+                const pdfHeight = 1080;
 
                 // Create PDF with exact container dimensions
                 const doc = new jsPDF({
-                    orientation: pdfWidth > pdfHeight ? "landscape" : "portrait",
+                    orientation: "landscape",
                     unit: "px",
                     format: [pdfWidth, pdfHeight]
                 });
@@ -2041,6 +2063,10 @@
                 if (progressOverlay && progressOverlay.parentNode) {
                     progressOverlay.parentNode.removeChild(progressOverlay);
                 }
+                // Restore original transform
+                if (container) {
+                    container.style.transform = originalTransform;
+                }
             }
         }
 
@@ -2113,6 +2139,27 @@
                 lightboxModal.classList.remove('active');
             }
         });
+
+        // Scale-to-Fit: Normalizes display across different DPI/resolution screens
+        (function scaleToFit() {
+            const wrapper = document.querySelector('.slideshow-wrapper');
+            const container = document.querySelector('.slideshow-container');
+            if (!wrapper || !container) return;
+
+            const targetWidth = 1920;
+            const targetHeight = 1080;
+
+            function applyScale() {
+                const wrapperRect = wrapper.getBoundingClientRect();
+                const scaleX = wrapperRect.width / targetWidth;
+                const scaleY = wrapperRect.height / targetHeight;
+                const scale = Math.min(scaleX, scaleY);
+                container.style.transform = `scale(${scale})`;
+            }
+
+            applyScale();
+            window.addEventListener('resize', applyScale);
+        })();
     </script>
 </body>
 </html>

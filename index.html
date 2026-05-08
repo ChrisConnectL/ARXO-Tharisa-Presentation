@@ -5,6 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Connect Logistics – Integrated Logistics Corridor Costing Simulation Overview">
+  <meta name="author" content="Connect Logistics">
     <title>Connect Logistics - Integrated Logistics Corridor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -535,16 +537,7 @@
         }
 
         /* Slide 2: How To Read */
-        .slide-2 .header-icon {
-            position: absolute;
-            top: 50px;
-            right: 50px;
-        }
-
-        .slide-2 .header-icon img {
-            width: 56px;
-            height: 56px;
-        }
+        /* .slide-2 .header-icon — removed, covered by .slide .header-icon */
 
         .slide-2 h2 {
             margin-bottom: 36px;
@@ -643,10 +636,7 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .slide-3 .leg-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-        }
+        /* .slide-3 .leg-card:hover — removed, covered by global .leg-card:hover */
 
         .slide-3 .leg-card.chrome {
             border-left-color: var(--accent-emerald);
@@ -967,16 +957,7 @@
             margin-bottom: 16px;
         }
 
-        .slide-5 .header-icon {
-            position: absolute;
-            top: 50px;
-            right: 50px;
-        }
-
-        .slide-5 .header-icon img {
-            width: 56px;
-            height: 56px;
-        }
+        /* .slide-5 .header-icon — removed, covered by .slide .header-icon */
 
         .slide-5 .split-horizontal {
             display: flex;
@@ -1554,7 +1535,32 @@
                 linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
             background-size: 40px 40px;
         }
-    </style>
+  
+    /* Toast Notification */
+    .toast-notification {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #1E293B;
+      color: #fff;
+      padding: 16px 28px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      border-left: 4px solid #EF4444;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      z-index: 4000;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+    }
+    .toast-notification.visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
@@ -1562,7 +1568,7 @@
     <div class="slideshow-wrapper">
         <div class="slideshow-container">
             <!-- Slide 1: Title & Intent -->
-        <section class="slide slide-1 active" data-slide="1">
+        <section class="slide slide-1 active" data-slide="1" role="region" aria-roledescription="slide" aria-label="Slide 1">
             <div class="geometric-pattern"></div>
             <button class="pdf-btn" onclick="generatePdf()" title="Generate PDF"><i class="fas fa-file-pdf"></i> Generate PDF</button>
             <div class="slide-content">
@@ -1577,10 +1583,10 @@
         </section>
 
         <!-- Slide 2: How To Read This Proposal -->
-        <section class="slide slide-2" data-slide="2">
+        <section class="slide slide-2" data-slide="2" role="region" aria-roledescription="slide" aria-label="Slide 2">
             <div class="slide-content">
                 <div class="header-icon">
-                    <img src="https://i.ibb.co/3mHc9nqh/Connect-Logistics-Icon.png" alt="Connect Logistics">
+                    <img loading="lazy" src="https://i.ibb.co/3mHc9nqh/Connect-Logistics-Icon.png" alt="Connect Logistics">
                 </div>
                 <h2>How To Read This Proposal</h2>
                 <div class="cards-grid">
@@ -1614,10 +1620,10 @@
         </section>
 
         <!-- Slide 3: Corridor Context -->
-        <section class="slide slide-3" data-slide="3">
+        <section class="slide slide-3" data-slide="3" role="region" aria-roledescription="slide" aria-label="Slide 3">
             <div class="slide-content">
                 <div class="header-icon">
-                    <img src="https://i.ibb.co/3mHc9nqh/Connect-Logistics-Icon.png" alt="Connect Logistics">
+                    <img loading="lazy" src="https://i.ibb.co/3mHc9nqh/Connect-Logistics-Icon.png" alt="Connect Logistics">
                 </div>
                 <h2>Corridor Context: Two Linked Movements, Two Separate Models</h2>
                 <p class="main-message">The corridor is viewed as two distinct logistics legs: diesel moving inland and chrome moving back to Durban. The operating corridor is linked, but the commercial models remain separate.</p>
@@ -1648,7 +1654,7 @@
                     </div>
                     <div class="map-container">
                         <div class="map-frame">
-                            <img src="https://i.ibb.co/NnVWMDkW/Drawing1.png" alt="Corridor Map">
+                            <img loading="lazy" src="https://i.ibb.co/NnVWMDkW/Drawing1.png" alt="Corridor Map">
                         </div>
                     </div>
                 </div>
@@ -1660,10 +1666,10 @@
         </section>
 
         <!-- Slide 4: Diesel Model Intent & References -->
-        <section class="slide slide-4" data-slide="4">
+        <section class="slide slide-4" data-slide="4" role="region" aria-roledescription="slide" aria-label="Slide 4">
             <div class="slide-content">
                 <div class="header-icon">
-                    <img src="https://i.ibb.co/3mHc9nqh/Connect-Logistics-Icon.png" alt="Connect Logistics">
+                    <img loading="lazy" src="https://i.ibb.co/3mHc9nqh/Connect-Logistics-Icon.png" alt="Connect Logistics">
                 </div>
                 <h2>Bulk Liquid Diesel – Delivered Cost Simulation (Zone 9C)</h2>
                 <p class="main-message">The diesel model shows how an illustrative delivered cost is built using a fuel input reference and a separately modelled transport cost. It does not position Connect Logistics as a diesel trader.</p>
@@ -1704,7 +1710,7 @@
                     </div>
                     <div class="image-section">
                         <div class="main-image">
-                            <img src="https://i.ibb.co/35cDDsvb/20250313-102549.jpg" alt="Tankers being loaded with fuel">
+                            <img loading="lazy" src="https://i.ibb.co/35cDDsvb/20250313-102549.jpg" alt="Tankers being loaded with fuel">
                         </div>
                     </div>
                 </div>
@@ -1718,10 +1724,10 @@
         </section>
 
         <!-- Slide 5: Costing Simulation -->
-        <section class="slide slide-5" data-slide="5">
+        <section class="slide slide-5" data-slide="5" role="region" aria-roledescription="slide" aria-label="Slide 5">
             <div class="slide-content">
                 <div class="header-icon">
-                    <img src="https://i.ibb.co/3mHc9nqh/Connect-Logistics-Icon.png" alt="Connect Logistics">
+                    <img loading="lazy" src="https://i.ibb.co/3mHc9nqh/Connect-Logistics-Icon.png" alt="Connect Logistics">
                 </div>
                 <div class="side-callout">POC basis: ±1.6 million litres/month</div>
                 <h2>Bulk Liquid Diesel: Costing Simulation Outputs</h2>
@@ -1741,15 +1747,15 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><strong>Fuel input price<strong></td>
-                                        <td><strong>Connect Logistics Procured Price<strong></td>
+                                        <td><strong>Fuel input price</strong></td>
+                                        <td><strong>Connect Logistics Procured Price</strong></td>
                                         <td>R24.34</td>
                                         <td class="connect-col">R24.34</td>
                                         <td class="connect-col">R24.34</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Transport cost<strong></td>
-                                        <td><strong>Connect Logistics Transport Rate<strong></td>
+                                        <td><strong>Transport cost</strong></td>
+                                        <td><strong>Connect Logistics Transport Rate</strong></td>
                                         <td>R1.07</td>
                                         <td class="connect-col">R0.79</td>
                                         <td class="connect-col">R0.73</td>
@@ -1779,17 +1785,17 @@
                         </div>
                     </div>
                     <div class="image-section">
-                        <img src="https://i.ibb.co/4RkJBjD2/Whats-App-Image-2025-08-25-at-15-20-55-c1c3ab6f.jpg" alt="Equipment visualization">
+                        <img loading="lazy" src="https://i.ibb.co/4RkJBjD2/Whats-App-Image-2025-08-25-at-15-20-55-c1c3ab6f.jpg" alt="Equipment visualization">
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Slide 6: Key Parameters & Guardrails -->
-        <section class="slide slide-6" data-slide="6">
+        <section class="slide slide-6" data-slide="6" role="region" aria-roledescription="slide" aria-label="Slide 6">
             <div class="slide-content">
                 <div class="header-icon">
-                    <img src="https://i.ibb.co/3mHc9nqh/Connect-Logistics-Icon.png" alt="Connect Logistics">
+                    <img loading="lazy" src="https://i.ibb.co/3mHc9nqh/Connect-Logistics-Icon.png" alt="Connect Logistics">
                 </div>
                 <h2>Bulk Liquid Diesel: Key Parameters & Guardrails</h2>
                 <div class="split-layout">
@@ -1822,7 +1828,7 @@
                         </div>
                     </div>
                     <div class="image-card">
-                        <img src="https://i.ibb.co/wtJdYyp/Whats-App-Image-2025-08-25-at-09-31-34-6e89ab94.jpg" alt="Tanks flat on deck">
+                        <img loading="lazy" src="https://i.ibb.co/wtJdYyp/Whats-App-Image-2025-08-25-at-09-31-34-6e89ab94.jpg" alt="Tanks flat on deck">
                     </div>
                 </div>
                 <div class="footer-pills">
@@ -1833,10 +1839,10 @@
         </section>
 
         <!-- Slide 7: Chrome FOB Logistics -->
-        <section class="slide slide-7" data-slide="7">
+        <section class="slide slide-7" data-slide="7" role="region" aria-roledescription="slide" aria-label="Slide 7">
             <div class="slide-content">
                 <div class="header-icon">
-                    <img src="https://i.ibb.co/3mHc9nqh/Connect-Logistics-Icon.png" alt="Connect Logistics">
+                    <img loading="lazy" src="https://i.ibb.co/3mHc9nqh/Connect-Logistics-Icon.png" alt="Connect Logistics">
                 </div>
                 <h2>Chrome FOB Logistics – Pit To Port Service Overview</h2>
                 <p class="main-message">Chrome moves from inland loading points to Durban and FOB readiness under a standalone pit-to-port service model.</p>
@@ -1868,10 +1874,10 @@
                     </div>
                     <div class="image-section-vertical">
                         <div class="vertical-image top">
-                            <img src="https://i.ibb.co/VYNCjKF5/IMG-20250307-WA0023.jpg" alt="Panel set built on trailer deck">
+                            <img loading="lazy" src="https://i.ibb.co/VYNCjKF5/IMG-20250307-WA0023.jpg" alt="Panel set built on trailer deck">
                         </div>
                         <div class="vertical-image bottom">
-                            <img src="https://i.ibb.co/jZRBmjz1/IMG-20250307-WA0011.jpg" alt="Panel set underneath and tank over panel set">
+                            <img loading="lazy" src="https://i.ibb.co/jZRBmjz1/IMG-20250307-WA0011.jpg" alt="Panel set underneath and tank over panel set">
                         </div>
                     </div>
                 </div>
@@ -1883,12 +1889,12 @@
         </section>
 
         <!-- Slide 8: Close -->
-        <section class="slide slide-8" data-slide="8">
+        <section class="slide slide-8" data-slide="8" role="region" aria-roledescription="slide" aria-label="Slide 8">
             <div class="geometric-pattern"></div>
             <div class="bg-pattern"></div>
             <div class="slide-content">
                 <div class="logo-container">
-                    <img src="https://i.ibb.co/zVWzCQ9q/Connect-Logistics-Logo.png" alt="Connect Logistics">
+                    <img loading="lazy" src="https://i.ibb.co/zVWzCQ9q/Connect-Logistics-Logo.png" alt="Connect Logistics">
                 </div>
                 <h2>How This Is Intended To Be Used</h2>
                 <p class="main-message">This framework supports a structured Teams discussion where ARXO/Tharisa and Connect Logistics can review the model, validate assumptions and decide whether to progress into a POC or phased engagement.</p>
@@ -1924,243 +1930,280 @@
     </div>
 
     <!-- Navigation - Outside slide card on navy background -->
-    <button class="nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-    <button class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
-    <div class="slide-counter"><span id="currentSlide">1</span> / 8</div>
+    <button class="nav-btn" id="prevBtn" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+    <button class="nav-btn" id="nextBtn" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+    <div class="slide-counter" aria-live="polite"><span id="currentSlide">1</span> / 8</div>
 
     <!-- Lightbox Modal -->
-    <div class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Image preview">
         <div class="lightbox-content">
-            <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
-            <img src="" alt="Enlarged view" id="lightboxImg">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Close preview"><i class="fas fa-times"></i></button>
+            <img loading="lazy" src="" alt="Enlarged view" id="lightboxImg">
         </div>
     </div>
 
     <script>
-        // PDF Generation
-        async function generatePdf() {
-            const button = document.querySelector('.pdf-btn');
-            const originalText = button.innerHTML;
-            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
-            button.disabled = true;
+    // Toast notification helper
+    function showToast(message, duration = 4000) {
+      const toast = document.createElement('div');
+      toast.className = 'toast-notification';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      requestAnimationFrame(() => {
+        toast.classList.add('visible');
+      });
+      setTimeout(() => {
+        toast.classList.remove('visible');
+        setTimeout(() => {
+          if (toast.parentNode) toast.parentNode.removeChild(toast);
+        }, 300);
+      }, duration);
+    }
 
-            // Create progress overlay with circular loading animation
-            const progressOverlay = document.createElement('div');
-            progressOverlay.className = 'pdf-progress-overlay';
-            progressOverlay.innerHTML = `
-                <div class="pdf-progress-container">
-                    <svg width="0" height="0" style="position:absolute;">
-                        <defs>
-                            <linearGradient id="pdfGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#10B981" />
-                                <stop offset="100%" style="stop-color:#34D399" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                    <div class="pdf-progress-ring">
-                        <div class="pdf-pulse"></div>
-                        <svg width="140" height="140" viewBox="0 0 140 140">
-                            <circle class="pdf-progress-ring-bg" cx="70" cy="70" r="63"></circle>
-                            <circle class="pdf-progress-ring-fill" cx="70" cy="70" r="63" id="progressCircle"></circle>
-                        </svg>
-                        <div class="pdf-progress-percent" id="progressPercent">0%</div>
-                    </div>
-                    <div class="pdf-progress-text">Generating PDF</div>
-                    <div class="pdf-progress-status" id="progressStatus">Preparing presentation...</div>
-                </div>
-            `;
-            document.body.appendChild(progressOverlay);
+    // PDF Generation
+    async function generatePdf() {
+      const button = document.querySelector('.pdf-btn');
+      const originalText = button.innerHTML;
+      button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+      button.disabled = true;
 
-            const container = document.querySelector('.slideshow-container');
-            const originalTransform = container.style.transform;
+      // Create progress overlay with circular loading animation
+      const progressOverlay = document.createElement('div');
+      progressOverlay.className = 'pdf-progress-overlay';
+      progressOverlay.innerHTML = `
+        <div class="pdf-progress-container">
+          <svg width="0" height="0" style="position:absolute;">
+            <defs>
+              <linearGradient id="pdfGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#10B981" />
+                <stop offset="100%" style="stop-color:#34D399" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="pdf-progress-ring">
+            <div class="pdf-pulse"></div>
+            <svg width="140" height="140" viewBox="0 0 140 140">
+              <circle class="pdf-progress-ring-bg" cx="70" cy="70" r="63"></circle>
+              <circle class="pdf-progress-ring-fill" cx="70" cy="70" r="63" id="progressCircle"></circle>
+            </svg>
+            <div class="pdf-progress-percent" id="progressPercent">0%</div>
+          </div>
+          <div class="pdf-progress-text">Generating PDF</div>
+          <div class="pdf-progress-status" id="progressStatus">Preparing presentation...</div>
+        </div>
+      `;
+      document.body.appendChild(progressOverlay);
 
-            try {
-                const { jsPDF } = window.jspdf;
-                const slides = document.querySelectorAll('.slide');
-                
-                // Reset transform for native resolution capture
-                container.style.transform = 'scale(1)';
-                
-                // Use fixed 1920x1080 dimensions for PDF
-                const pdfWidth = 1920;
-                const pdfHeight = 1080;
+      const container = document.querySelector('.slideshow-container');
+      const originalTransform = container.style.transform;
 
-                // Create PDF with exact container dimensions
-                const doc = new jsPDF({
-                    orientation: "landscape",
-                    unit: "px",
-                    format: [pdfWidth, pdfHeight]
-                });
+      try {
+        const { jsPDF } = window.jspdf;
+        const allSlides = document.querySelectorAll('.slide');
 
-                // Hide PDF button during capture
-                const pdfBtn = document.querySelector('.pdf-btn');
-                if (pdfBtn) pdfBtn.style.visibility = 'hidden';
+        // Reset transform for native resolution capture
+        container.style.transform = 'scale(1)';
 
-                for (let i = 0; i < slides.length; i++) {
-                    // Update circular progress smoothly
-                    const progress = Math.round(((i + 1) / slides.length) * 100);
-                    const circumference = 396;
-                    const offset = circumference - (progress / 100) * circumference;
-                    progressOverlay.querySelector('#progressPercent').textContent = progress + '%';
-                    progressOverlay.querySelector('#progressCircle').style.strokeDashoffset = offset;
-                    progressOverlay.querySelector('#progressStatus').textContent = 
-                        `Capturing slide ${i + 1} of ${slides.length}...`;
-                    
-                    // Show slide for capture
-                    slides.forEach((s, idx) => {
-                        s.classList.toggle('active', idx === i);
-                    });
-                    
-                    // Wait for fonts and images
-                    await new Promise(r => setTimeout(r, 600));
-                    await document.fonts.ready;
-                    
-                    // Capture full container with navy background
-                    const canvas = await html2canvas(container, {
-                        scale: 1.5,
-                        useCORS: true,
-                        allowTaint: true,
-                        backgroundColor: '#111827',
-                        logging: false
-                    });
+        // Use fixed 1920x1080 dimensions for PDF
+        const pdfWidth = 1920;
+        const pdfHeight = 1080;
 
-                    const imgData = canvas.toDataURL('image/png');
+        // Create PDF with exact container dimensions
+        const doc = new jsPDF({
+          orientation: "landscape",
+          unit: "px",
+          format: [pdfWidth, pdfHeight]
+        });
 
-                    // Add new page for subsequent slides
-                    if (i > 0) {
-                        doc.addPage([pdfWidth, pdfHeight]);
-                    }
+        // Hide PDF button during capture
+        const pdfBtn = document.querySelector('.pdf-btn');
+        if (pdfBtn) pdfBtn.style.visibility = 'hidden';
 
-                    // Place image edge-to-edge
-                    doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-                }
+        for (let i = 0; i < allSlides.length; i++) {
+          // Update circular progress smoothly
+          const progress = Math.round(((i + 1) / allSlides.length) * 100);
+          const circumference = 396;
+          const offset = circumference - (progress / 100) * circumference;
+          progressOverlay.querySelector('#progressPercent').textContent = progress + '%';
+          progressOverlay.querySelector('#progressCircle').style.strokeDashoffset = offset;
+          progressOverlay.querySelector('#progressStatus').textContent =
+            `Capturing slide ${i + 1} of ${allSlides.length}...`;
 
-                // Restore first slide and PDF button
-                slides.forEach((s, idx) => {
-                    s.classList.toggle('active', idx === 0);
-                });
-                if (pdfBtn) pdfBtn.style.visibility = 'visible';
+          // Show slide for capture
+          allSlides.forEach((s, idx) => {
+            s.classList.toggle('active', idx === i);
+          });
 
-                // Download PDF
-                const pdfBuffer = doc.output('arraybuffer');
-                const blob = new Blob([pdfBuffer], { type: 'application/pdf' });
-                const url = URL.createObjectURL(blob);
-                
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'ARXO_Tharisa_Logistics_Corridor.pdf';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
+          // Wait for fonts and rendering
+          await new Promise(r => setTimeout(r, 600));
+          await document.fonts.ready;
 
-            } catch (error) {
-                console.error('PDF generation failed:', error);
-                alert('PDF generation failed. Please try again.');
-            } finally {
-                button.innerHTML = originalText;
-                button.disabled = false;
-                // Remove progress overlay
-                if (progressOverlay && progressOverlay.parentNode) {
-                    progressOverlay.parentNode.removeChild(progressOverlay);
-                }
-                // Restore original transform
-                if (container) {
-                    container.style.transform = originalTransform;
-                }
-            }
+          // Wait for all images in the current slide to fully load
+          const currentImages = allSlides[i].querySelectorAll('img');
+          await Promise.all([...currentImages].map(img => {
+            if (img.complete) return Promise.resolve();
+            return new Promise(r => { img.onload = r; img.onerror = r; });
+          }));
+
+          // Capture full container with navy background
+          const canvas = await html2canvas(container, {
+            scale: 1.5,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: '#111827',
+            logging: false
+          });
+
+          const imgData = canvas.toDataURL('image/png');
+
+          // Add new page for subsequent slides
+          if (i > 0) {
+            doc.addPage([pdfWidth, pdfHeight]);
+          }
+
+          // Place image edge-to-edge
+          doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
         }
 
-        // Slide Navigation
-        const slides = document.querySelectorAll('.slide');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const currentSlideSpan = document.getElementById('currentSlide');
-        let currentSlide = 0;
+        // Download PDF
+        const pdfBuffer = doc.output('arraybuffer');
+        const blob = new Blob([pdfBuffer], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'ARXO_Tharisa_Logistics_Corridor.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            currentSlideSpan.textContent = index + 1;
+      } catch (error) {
+        console.error('PDF generation failed:', error);
+        showToast('PDF generation failed. Please try again.');
+      } finally {
+        button.innerHTML = originalText;
+        button.disabled = false;
+
+        // Always restore slide 1 and sync state
+        const allSlides = document.querySelectorAll('.slide');
+        allSlides.forEach((s, idx) => s.classList.toggle('active', idx === 0));
+        currentSlide = 0;
+        showSlide(0);
+
+        // Remove progress overlay
+        if (progressOverlay && progressOverlay.parentNode) {
+          progressOverlay.parentNode.removeChild(progressOverlay);
         }
 
-        prevBtn.addEventListener('click', () => {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        });
+        // Restore PDF button visibility
+        const pdfBtn = document.querySelector('.pdf-btn');
+        if (pdfBtn) pdfBtn.style.visibility = 'visible';
 
-        nextBtn.addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        });
+        // Restore original transform
+        if (container) {
+          container.style.transform = originalTransform;
+        }
+      }
+    }
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                showSlide(currentSlide);
-            } else if (e.key === 'ArrowRight' || e.key === ' ') {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
-            }
-        });
+    // Slide Navigation
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const currentSlideSpan = document.getElementById('currentSlide');
+    let currentSlide = 0;
 
-        // Lightbox Functionality
-        const lightboxModal = document.getElementById('lightboxModal');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxClose = document.getElementById('lightboxClose');
-        const allImages = document.querySelectorAll('.slide img');
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      currentSlideSpan.textContent = index + 1;
+    }
 
-        // Open lightbox on image click
-        allImages.forEach(img => {
-            img.style.cursor = 'pointer';
-            img.addEventListener('click', (e) => {
-                e.stopPropagation();
-                lightboxImg.src = img.src;
-                lightboxImg.alt = img.alt;
-                lightboxModal.classList.add('active');
-            });
-        });
+    prevBtn.addEventListener('click', () => {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    });
 
-        // Close lightbox on close button click
-        lightboxClose.addEventListener('click', () => {
-            lightboxModal.classList.remove('active');
-        });
+    nextBtn.addEventListener('click', () => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    });
 
-        // Close lightbox on overlay click
-        lightboxModal.addEventListener('click', (e) => {
-            if (e.target === lightboxModal) {
-                lightboxModal.classList.remove('active');
-            }
-        });
+    // Lightbox Functionality
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const allImages = document.querySelectorAll('.slide img');
 
-        // Close lightbox on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightboxModal.classList.contains('active')) {
-                lightboxModal.classList.remove('active');
-            }
-        });
+    // Open lightbox on image click
+    allImages.forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', (e) => {
+        e.stopPropagation();
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxModal.classList.add('active');
+      });
+    });
 
-        // Scale-to-Fit: Normalizes display across different DPI/resolution screens
-        (function scaleToFit() {
-            const wrapper = document.querySelector('.slideshow-wrapper');
-            const container = document.querySelector('.slideshow-container');
-            if (!wrapper || !container) return;
+    // Close lightbox on close button click
+    lightboxClose.addEventListener('click', () => {
+      lightboxModal.classList.remove('active');
+    });
 
-            const targetWidth = 1920;
-            const targetHeight = 1080;
+    // Close lightbox on overlay click
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal) {
+        lightboxModal.classList.remove('active');
+      }
+    });
 
-            function applyScale() {
-                const wrapperRect = wrapper.getBoundingClientRect();
-                const scaleX = wrapperRect.width / targetWidth;
-                const scaleY = wrapperRect.height / targetHeight;
-                const scale = Math.min(scaleX, scaleY);
-                container.style.transform = `scale(${scale})`;
-            }
+    // Merged keyboard handler: lightbox Escape takes priority, nav blocked while lightbox open
+    document.addEventListener('keydown', (e) => {
+      // Lightbox takes priority
+      if (e.key === 'Escape' && lightboxModal.classList.contains('active')) {
+        lightboxModal.classList.remove('active');
+        return;
+      }
 
-            applyScale();
-            window.addEventListener('resize', applyScale);
-        })();
-    </script>
+      // Block slide navigation while lightbox is open
+      if (lightboxModal.classList.contains('active')) return;
+
+      if (e.key === 'ArrowLeft') {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      } else if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault(); // prevent page scroll on spacebar
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+    });
+
+    // Scale-to-Fit using ResizeObserver for precise, performant scaling
+    (function scaleToFit() {
+      const wrapper = document.querySelector('.slideshow-wrapper');
+      const container = document.querySelector('.slideshow-container');
+      if (!wrapper || !container) return;
+
+      const targetWidth = 1920;
+      const targetHeight = 1080;
+
+      function applyScale() {
+        const wrapperRect = wrapper.getBoundingClientRect();
+        const scaleX = wrapperRect.width / targetWidth;
+        const scaleY = wrapperRect.height / targetHeight;
+        const scale = Math.min(scaleX, scaleY);
+        container.style.transform = `scale(${scale})`;
+      }
+
+      applyScale();
+
+      const resizeObserver = new ResizeObserver(() => {
+        applyScale();
+      });
+      resizeObserver.observe(wrapper);
+    })();
+  </script>
 </body>
 </html>

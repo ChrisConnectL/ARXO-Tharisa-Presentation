@@ -1536,6 +1536,108 @@
             background-size: 40px 40px;
         }
   
+    /* Rate Breakdown Card (Slide 7) */
+    .rate-breakdown-card {
+      background: linear-gradient(135deg, rgba(28, 37, 69, 0.08) 0%, rgba(28, 37, 69, 0.03) 100%);
+      border: 1px solid rgba(28, 37, 69, 0.2);
+      border-radius: 16px;
+      padding: 18px 20px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+    .rate-breakdown-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    }
+    .rate-breakdown-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 14px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid rgba(28, 37, 69, 0.12);
+    }
+    .rate-breakdown-header i {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent-indigo) 0%, #2d3a5c 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .rate-breakdown-header span {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent-indigo);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .rate-breakdown-body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .rate-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--white);
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+      padding: 12px 22px;
+      min-width: 110px;
+      flex: 1;
+    }
+    .rate-item .rate-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #94A3B8;
+      margin-bottom: 4px;
+    }
+    .rate-item .rate-value {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent-indigo);
+      line-height: 1.2;
+    }
+    .rate-item .rate-unit {
+      font-size: 12px;
+      font-weight: 500;
+      color: #94A3B8;
+      margin-top: 2px;
+    }
+    .rate-item.rate-total {
+      background: linear-gradient(135deg, var(--accent-emerald) 0%, #34D399 100%);
+      border-color: transparent;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+    .rate-item.rate-total .rate-label {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    .rate-item.rate-total .rate-value {
+      color: var(--white);
+    }
+    .rate-item.rate-total .rate-unit {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    .rate-divider {
+      font-size: 22px;
+      font-weight: 700;
+      color: #94A3B8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding-top: 8px;
+    }
+
     /* Toast Notification */
     .toast-notification {
       position: fixed;
@@ -1560,6 +1662,7 @@
       opacity: 1;
       transform: translateX(-50%) translateY(0);
     }
+
   </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -1864,10 +1967,31 @@
                             <div class="bullet-icon"><i class="fas fa-layer-group"></i></div>
                             <p class="bullet-text"><strong>Empty MTS tanks</strong> can return above the chrome cargo using the elevated-leg configuration.</p>
                         </div>
-                        <div class="bullet-card rate-card">
-                            <div class="bullet-icon"><i class="fas fa-tag"></i></div>
-                            <p class="bullet-text"><strong>Indicative Chrome FOB Logistics Rate:</strong> Total Rate/ton R947.32 (TSP R775.01/ton - FOB R192.31/ton)</p>
-                        </div>
+                        <div class="rate-breakdown-card">
+                <div class="rate-breakdown-header">
+                  <i class="fas fa-tag"></i>
+                  <span>Indicative Chrome FOB Logistics Rate</span>
+                </div>
+                <div class="rate-breakdown-body">
+                  <div class="rate-item">
+                    <span class="rate-label">TSP</span>
+                    <span class="rate-value">R775.01</span>
+                    <span class="rate-unit">/ton</span>
+                  </div>
+                  <div class="rate-divider">+</div>
+                  <div class="rate-item">
+                    <span class="rate-label">FOB</span>
+                    <span class="rate-value">R192.31</span>
+                    <span class="rate-unit">/ton</span>
+                  </div>
+                  <div class="rate-divider">=</div>
+                  <div class="rate-item rate-total">
+                    <span class="rate-label">Total</span>
+                    <span class="rate-value">R967.32</span>
+                    <span class="rate-unit">/ton</span>
+                  </div>
+                </div>
+              </div>
                         <div class="flow-text">
                             <i class="fas fa-arrow-right"></i> Inland loading → Durban corridor → Port / FOB readiness <i class="fas fa-anchor"></i>
                         </div>
